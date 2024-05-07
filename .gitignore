@@ -42,3 +42,4 @@ typings
 .node_repl_history
 
 /cypress/screenshots
+/allure-report
