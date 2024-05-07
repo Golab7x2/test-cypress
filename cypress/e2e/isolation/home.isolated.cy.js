@@ -13,7 +13,7 @@ describe('home isolated tests', () => {
 
         getUsersMocks.mockUsers()
 
-        cy.visit('http://localhost:8081')
+        cy.visit('')
         
         cy.get('li').should('have.length.at.least', 1)
     })

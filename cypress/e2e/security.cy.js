@@ -11,7 +11,7 @@ describe('example to-do app', () => {
 
         cy.visit('http://localhost:8081')
         cy.get('h2').should('have.text', 'Login')
-        cy.url().should('contain', '/login')
+        cy.url().should('contain', '/login1')
     })
   
   })
