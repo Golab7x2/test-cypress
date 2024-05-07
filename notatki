@@ -1,0 +1,13 @@
+- Test powinien zaczynać się możliwie jak najdalej
+- Test powinien przeklikiwać jak najmniej elementów na UI
+
+- Test powinien sam się setupować
+
+- Plik e2e.js w Cypress jest uruchamiany przed każdym testem - można w nim np. ustawić zmiany viewport dla poszczególnych testów
+
+- Test automatyczny po sprawdzeniu UI może użyć backendu (zapytanie HTTP) w celu weryfikacji czy dane zostały poprawnie zapisane
+
+- Funkcje find() i contains()
+
+- Docker daje możliwość komunikacji z jobem, ale job może komunikować się z serwerem dockera / hostem tylko przez jeden zmapowany port
+
