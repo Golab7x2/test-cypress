@@ -1,35 +1,27 @@
 /// <reference types="cypress" />
 
+import { alerts } from "../../components/alerts"
 import { getRandomUser } from "../../generators/userGenerator"
+import { registerMocks } from "../../mocks/postSignUp"
+import { registerPage } from "../../pages/registerPage"
 
 describe('Login test in isolation', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:8081')
         cy.login('admin', "admin")
+        cy.visit('/register')
     })
 
     it('should register user', () => {
         const newUser = getRandomUser()
+        const message = 'Registration successful'
 
-        cy.intercept('POST', '**/users/signup', (req) => {
-            req.reply({
-                statusCode: 201
-            })
-        })
-
-        cy.get('#addmore').click()
-
-        cy.get('[name=firstName]').type(newUser.firstName)
-        cy.get('[name=lastName]').type(newUser.lastName)
-        cy.get('[name=username]').type(newUser.username)
-        cy.get('[name=password]').type(newUser.password)
-        cy.get('[name=email]').type(newUser.email)
-
-        cy.get('.btn-primary').click()
+        registerMocks.mockSuccess()
 
 
-        cy.get('.alert-success').should('contain.text', 'Registration successful')
-        cy.url().should('contain', '/')
+        registerPage.attemptRegister(newUser)
+
+
+        alerts.verifySuccess(message)
     })
 
 })
